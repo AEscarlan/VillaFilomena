@@ -1,11 +1,11 @@
 package com.example.villafilomena.Frontdesk;
 
-public class Guest_arrival_departure_model {
+public class Guest_details_model {
     int list_no;
     String booking_id, currentBooking_Date, guest_name, checkIn_date, checkIn_time, checkOut_date, checkOut_time,
             guest_count, room_id, cottage_id, total_cost, pay, payment_status, balance, reference_num, booking_status, invoice;
 
-    public Guest_arrival_departure_model(int list_no, String booking_id, String currentBooking_Date, String guest_name, String checkIn_date, String checkIn_time, String checkOut_date, String checkOut_time, String guest_count, String room_id, String cottage_id, String total_cost, String pay, String payment_status, String balance, String reference_num, String booking_status, String invoice) {
+    public Guest_details_model(int list_no, String booking_id, String currentBooking_Date, String guest_name, String checkIn_date, String checkIn_time, String checkOut_date, String checkOut_time, String guest_count, String room_id, String cottage_id, String total_cost, String pay, String payment_status, String balance, String reference_num, String booking_status, String invoice) {
         this.list_no = list_no;
         this.booking_id = booking_id;
         this.currentBooking_Date = currentBooking_Date;
@@ -26,7 +26,7 @@ public class Guest_arrival_departure_model {
         this.invoice = invoice;
     }
 
-    public Integer getList_no() {
+    public int getList_no() {
         return list_no;
     }
 

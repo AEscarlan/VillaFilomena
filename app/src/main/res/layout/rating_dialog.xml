@@ -1,81 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:backgroundTint="#008951">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background3"
+    android:padding="10dp">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Rate Us"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center"/>
+    
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/villa_filomena_logo"/>
 
-        <TextView
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rate Us"
-            android:textSize="28sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:layout_height="485dp"
+            android:background="@drawable/background2"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="How's your experience?"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginTop="30dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="How's your experience?"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="We value your feedback"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="We value your feedback"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="How do you feel about the Villa Filomena Natural Spring Resort?"
-            android:textSize="16sp"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_margin="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="How do you feel about the Villa Filomena Natural Spring Resort?"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-        <RatingBar
-            android:id="@+id/Guest_Rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1.0"
-            android:rating="3.0"
-            android:layout_gravity="center"/>
+            <RatingBar
+                android:id="@+id/Guest_Rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:rating="3.0"
+                android:stepSize="1.0" />
 
-        <EditText
-            android:id="@+id/Guest_RatingComment"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@color/white"
-            android:layout_margin="20dp"
-            android:hint="Comment Here"
-            android:textSize="14dp"
-            android:gravity="left|top"
-            android:padding="10dp"
-            android:foreground="@drawable/border"/>
+            <EditText
+                android:id="@+id/Guest_RatingComment"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                android:background="@color/white"
+                android:foreground="@drawable/border"
+                android:gravity="left|top"
+                android:hint="Comment Here"
+                android:padding="10dp"
+                android:textSize="14dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:background="#FFD84F"
-            android:text="Submit"
-            android:foreground="@drawable/border"/>
-    </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/guest_RatesFeedback_submit"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#FFD84F"
+                android:foreground="@drawable/border"
+                android:text="Submit"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

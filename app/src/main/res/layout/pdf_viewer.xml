@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:cardBackgroundColor="#0000"
+    app:cardElevation="0dp">
+
+    <Button
+        android:id="@+id/viewpdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Pdf"
+        android:textAllCaps="false"
+        android:textSize="26sp"
+        android:padding="15dp"/>
+
+    <Button
+        android:id="@+id/downloadpdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download Pdf"
+        android:textAllCaps="false"
+        android:textSize="26sp"
+        android:padding="15dp"
+        android:layout_marginLeft="170dp"/>
+
+</androidx.cardview.widget.CardView>

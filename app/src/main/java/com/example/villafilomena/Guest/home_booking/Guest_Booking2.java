@@ -13,7 +13,6 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +23,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.villafilomena.IP_Address;
 import com.example.villafilomena.R;
 
 import org.json.JSONArray;
@@ -93,7 +91,6 @@ public class Guest_Booking2 extends Fragment {
         View view = inflater.inflate(R.layout.guest_booking2, container, false);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SharedPreferences.Editor editor = preferences.edit();
 
         IP = preferences.getString("IP_Address", "").trim();
 
@@ -105,9 +102,9 @@ public class Guest_Booking2 extends Fragment {
         txtKidAdult.setText(Guest_Booking.txtKidAdult.getText().toString());
         roominfo_holder = new ArrayList<>();
 
-        if(!Guest_Booking.visiblePositions.isEmpty()){
-            for (int i=0; i<Guest_Booking.visiblePositions.size(); i++){
-                RoomInfos(Guest_Booking.visiblePositions.get(i));
+        if(!Guest_Booking.visiblePositions_room.isEmpty()){
+            for (int i = 0; i<Guest_Booking.visiblePositions_room.size(); i++){
+                RoomInfos(Guest_Booking.visiblePositions_room.get(i));
             }
         }
 

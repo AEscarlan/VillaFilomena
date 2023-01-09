@@ -804,7 +804,7 @@ public class Booking_Dashboard extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String imageUrl = uri.toString();
 
-                                    String url = "http://"+ IP_Address.IP_Address+"/VillaFilomena/cottage_details.php";
+                                    String url = "http://"+IP+"/VillaFilomena/cottage_details.php";
                                     RequestQueue myrequest = Volley.newRequestQueue(getApplicationContext());
                                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                                         @Override
@@ -827,8 +827,10 @@ public class Booking_Dashboard extends AppCompatActivity {
                                         @Override
                                         protected HashMap<String,String> getParams() throws AuthFailureError {
                                             HashMap<String,String> map = new HashMap<String,String>();
-                                            map.put("name",System.currentTimeMillis()+"."+getfileExt(imageUri));
-                                            map.put("url",imageUrl);
+                                            map.put("imageUrl",imageUrl);
+                                            map.put("name",CottageName.getText().toString());
+                                            map.put("cottage_capacity",CottageCapacity.getText().toString());
+                                            map.put("cottage_rate",CottageRate.getText().toString());
                                             return map;
                                         }
                                     };

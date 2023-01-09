@@ -29,8 +29,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.villafilomena.IP_Address;
-import com.example.villafilomena.Login_Registration.Login_Guest;
 import com.example.villafilomena.R;
 
 import org.json.JSONArray;
@@ -38,7 +36,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.time.LocalDate;
 import java.util.HashMap;
 
 /**
@@ -97,10 +94,12 @@ public class Guest_Booking extends Fragment {
     //entrance fee details
     TextView daytourTime, nightTourTime, daytourFee, nighttourFee;
 
-    RecyclerView RoomInfo_list;
+    RecyclerView RoomInfo_list, CottageInfo_list;
     ArrayList<RoomInfos_model> roominfo_holder;
+    ArrayList<CottageInfos_model> cottageinfo_holder;
 
-    public static ArrayList<String> visiblePositions;
+    public static ArrayList<String> visiblePositions_room;
+    public static ArrayList<String> visiblePositions_cottage;
     public static int numDays = 0;
     public static int numNights = 0;
     public static double kidFee_Day, kidFee_Night, adultFee_Day, adultFee_Night;
@@ -131,9 +130,11 @@ public class Guest_Booking extends Fragment {
         daytourFee = view.findViewById(R.id.guestBooking_daytour_Fee);
         nighttourFee = view.findViewById(R.id.guestBooking_nighttour_Fee);
         RoomInfo_list = view.findViewById(R.id.guestBooking_RoomInfos_List);
+        CottageInfo_list = view.findViewById(R.id.guestBooking_CottageInfos_List);
 
         EntranceFee_Details();
         Room_Infos();
+        Cottage_Infos();
 
         checkIn_checkOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,7 +282,7 @@ public class Guest_Booking extends Fragment {
             public void onClick(View v) {
                 MainFrame.Continue.setVisibility(View.GONE);
                 MainFrame.Booknow.setVisibility(View.VISIBLE);
-                visiblePositions = new ArrayList<>();
+                visiblePositions_room = new ArrayList<>();
                 //RoomInfos_adapter adapter = (RoomInfos_adapter) RoomInfo_list.getAdapter();
 
                 int childCount = RoomInfo_list.getChildCount();
@@ -290,7 +291,18 @@ public class Guest_Booking extends Fragment {
                     CardView getCheck = (CardView) childView.findViewById(R.id.roomInfo_Check);
                     if (getCheck.getVisibility() == View.VISIBLE) {
                         final RoomInfos_model model = roominfo_holder.get(i);
-                        visiblePositions.add(model.getId());
+                        visiblePositions_room.add(model.getId());
+                    }
+                }
+
+                visiblePositions_cottage = new ArrayList<>();
+                int cottageChild_Count = CottageInfo_list.getChildCount();
+                for (int i = 0; i < cottageChild_Count; i++){
+                    View childView = CottageInfo_list.getLayoutManager().findViewByPosition(i);
+                    CardView getCheck = (CardView) childView.findViewById(R.id.roomInfo_Check);
+                    if (getCheck.getVisibility() == View.VISIBLE){
+                        final CottageInfos_model model = cottageinfo_holder.get(i);
+                        visiblePositions_cottage.add(model.getId());
                     }
                 }
                 replace(new Guest_Booking2());
@@ -458,6 +470,54 @@ public class Guest_Booking extends Fragment {
                     return map;
                 }
             };
+            myrequest.add(stringRequest);
+        }
+    }
+
+    private void Cottage_Infos(){
+        if(!IP.equalsIgnoreCase("")){
+            String url = "http://"+IP+"/VillaFilomena/retrieve_Cottage_Details.php";
+            RequestQueue myrequest = Volley.newRequestQueue(getActivity());
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                        if(success.equals("1")){
+                            cottageinfo_holder = new ArrayList<>();
+
+                            for (int i=0; i<jsonArray.length(); i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+
+                                CottageInfos_model model = new CottageInfos_model(object.getString("id"), object.getString("imageUrl"), object.getString("name"), object.getString("cottage_capacity"), object.getString("cottage_rate"));
+                                cottageinfo_holder.add(model);
+
+                            }
+
+                            CottageInfos_adapter adapter = new CottageInfos_adapter(cottageinfo_holder);
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                            CottageInfo_list.setLayoutManager(layoutManager);
+                            CottageInfo_list.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
+                        }else{
+                            Toast.makeText(getActivity(), "Failed to get", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }catch (Exception e){
+                        Toast.makeText(getActivity(), "Failed to get room information", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getActivity(),error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
             myrequest.add(stringRequest);
         }
     }

@@ -3,81 +3,56 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center|left"
     android:background="#0000">
-
-    <RadioButton
-        android:id="@+id/roomInfo2_Rbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/roomInfo2_RoomImage"
+            android:layout_width="180dp"
+            android:layout_height="200dp"/>
 
         <TextView
             android:id="@+id/roomInfo2_Roomname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Room Name"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:gravity="center"
             android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_margin="20dp">
 
         <TextView
             android:id="@+id/roomInfo2_Roomcapacity"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Room Capacity"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:gravity="center"
             android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/roomInfo2_Roomrate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Room Rate"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:layout_gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>
 
-    <androidx.legacy.widget.Space
-        android:layout_width="50dp"
-        android:layout_height="match_parent"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/roomInfo2_btnDec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:padding="5dp"/>
-
-        <TextView
-            android:id="@+id/roomInfo2_Count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:foreground="@drawable/border"
-            android:background="#d3d3d3"
-            android:padding="5dp"/>
-
-        <TextView
-            android:id="@+id/roomInfo2_btnInc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:padding="5dp"/>
-    </LinearLayout>
 
 </LinearLayout>

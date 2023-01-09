@@ -1,14 +1,14 @@
-package com.example.villafilomena.Frontdesk;
+package com.example.villafilomena.Manager;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -17,6 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.villafilomena.Frontdesk.Guest_arrival_Adapter;
+import com.example.villafilomena.Frontdesk.Guest_departure_Adapter;
+import com.example.villafilomena.Frontdesk.Guest_details_model;
 import com.example.villafilomena.R;
 
 import org.json.JSONArray;
@@ -27,28 +30,24 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
-public class Frontdesk_ExpArrival_Dashboard extends AppCompatActivity {
+public class Manager_SalesReport_Dashboard extends AppCompatActivity {
     String IP;
-    RecyclerView expArrival_list, expDeparture_list;
 
-    ArrayList<Guest_details_model> guestHolder;
-    ArrayList<Guest_details_model> guestHolder_checkOut;
-    String guestname;
-    TextView testing;
+    ArrayList<Guest_details_model> guestholder;
+
+    TextView pickedDate;
+    RecyclerView salesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.frontdesk_exp_arrival_dashboard);
+        setContentView(R.layout.manager_sales_report_dashboard);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         IP = preferences.getString("IP_Address", "").trim();
 
-        expArrival_list = findViewById(R.id.guest_ExpArrival_List);
-        expDeparture_list = findViewById(R.id.guest_ExpDeparture_List);
-        testing = findViewById(R.id.testing);
+        pickedDate = findViewById(R.id.salesReport_Date);
+        salesList = findViewById(R.id.manager_salesList);
 
-        retrieveGuest_Info();
     }
 
     private void retrieveGuest_Info() {
@@ -64,8 +63,7 @@ public class Frontdesk_ExpArrival_Dashboard extends AppCompatActivity {
                         JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                         int listNo_CheckIn = 1, listNo_CheckOut = 1;
-                        guestHolder = new ArrayList<>();
-                        guestHolder_checkOut = new ArrayList<>();
+                        guestholder = new ArrayList<>();
 
                         Calendar calendar = Calendar.getInstance();
                         Date currentDate = calendar.getTime();
@@ -87,23 +85,13 @@ public class Frontdesk_ExpArrival_Dashboard extends AppCompatActivity {
 
                                 //testing.setText(""+currentDate.toString());
 
-                                if (currentDate.equals(check_In)) {
+                                int month = calendar.get(Calendar.MONTH);
+
+                                if (month == Integer.parseInt(checinIn_date[1])-1) {
                                     Guest_details_model model = new Guest_details_model(listNo_CheckIn++, object.getString("booking_id"),object.getString("currentBooking_Date"),object.getString("fullname"),object.getString("checkIn_date"), object.getString("checkIn_time"),
                                             object.getString("checkOut_date"),object.getString("checkOut_time"),object.getString("guest_count"),object.getString("room_id"),object.getString("cottage_id"), object.getString("total_cost"),object.getString("pay"),
                                             object.getString("payment_status"),object.getString("balance"),object.getString("reference_num"),object.getString("booking_status"),object.getString("invoice"));
-                                    guestHolder.add(model);
-                                }
-
-                                calendar.set(Calendar.YEAR, Integer.parseInt(checkOut_date[2]));
-                                calendar.set(Calendar.MONTH, Integer.parseInt(checkOut_date[1])-1);
-                                calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(checkOut_date[0]));
-                                Date check_Out = calendar.getTime();
-
-                                if (currentDate.equals(check_Out)) {
-                                    Guest_details_model model = new Guest_details_model(listNo_CheckOut++, object.getString("booking_id"),object.getString("currentBooking_Date"),object.getString("fullname"),object.getString("checkIn_date"), object.getString("checkIn_time"),
-                                            object.getString("checkOut_date"),object.getString("checkOut_time"),object.getString("guest_count"),object.getString("room_id"),object.getString("cottage_id"), object.getString("total_cost"),object.getString("pay"),
-                                            object.getString("payment_status"),object.getString("balance"),object.getString("reference_num"),object.getString("booking_status"),object.getString("invoice"));
-                                    guestHolder_checkOut.add(model);
+                                    guestholder.add(model);
                                 }
 
                                 /*String[] roomID = object.getString("room_id").split(",");
@@ -113,16 +101,10 @@ public class Frontdesk_ExpArrival_Dashboard extends AppCompatActivity {
                                 String roomSize = String.valueOf(roomID.length);*/
                             }
 
-                            Guest_arrival_Adapter adapter = new Guest_arrival_Adapter(guestHolder);
+                            Manager_SalesReport_Adapter adapter = new Manager_SalesReport_Adapter(guestholder);
                             GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 1);
-                            expArrival_list.setLayoutManager(layoutManager);
-                            expArrival_list.setAdapter(adapter);
-
-                            Guest_departure_Adapter adapter1 = new Guest_departure_Adapter(guestHolder_checkOut);
-                            GridLayoutManager layoutManager1 = new GridLayoutManager(getApplicationContext(), 1);
-                            expDeparture_list.setLayoutManager(layoutManager1);
-                            expDeparture_list.setAdapter(adapter1);
-
+                            salesList.setLayoutManager(layoutManager);
+                            salesList.setAdapter(adapter);
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Failed to get", Toast.LENGTH_SHORT).show();
@@ -143,12 +125,11 @@ public class Frontdesk_ExpArrival_Dashboard extends AppCompatActivity {
                 @Override
                 protected HashMap<String,String> getParams() throws AuthFailureError {
                     HashMap<String,String> map = new HashMap<String,String>();
-                    map.put("status","Confirmed");
+                    map.put("status","Checked_Out");
                     return map;
                 }
             };
             myrequest.add(stringRequest);
         }
     }
-
 }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.villafilomena.R;
+import com.squareup.picasso.Picasso;
 
 import java.security.cert.TrustAnchor;
 import java.util.ArrayList;
@@ -34,39 +36,10 @@ public class RoomInfos_adapter2 extends RecyclerView.Adapter<RoomInfos_adapter2.
     public void onBindViewHolder(@NonNull RoomInfos_adapter2.ViewHolder holder, int position) {
         final RoomInfos_model model = roominfo_holder.get(position);
 
+        Picasso.get().load(model.getImageUrl()).into(holder.roomImage);
         holder.RoomName.setText(model.getName());
         holder.RoomCapacity.setText(model.getRoom_capacity());
         holder.RoomRate.setText(model.getRoom_rate());
-
-        holder.Rbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!holder.Rbtn.isSelected()){
-                    holder.Rbtn.setChecked(true);
-                    holder.Rbtn.setSelected(true);
-                }else{
-                    holder.Rbtn.setChecked(false);
-                    holder.Rbtn.setSelected(false);
-                }
-            }
-        });
-
-        holder.Dec.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(count != 0){
-                    count--;
-                    holder.Count.setText(""+count);
-                }
-            }
-        });
-        holder.Inc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                count++;
-                holder.Count.setText(""+count);
-            }
-        });
     }
 
     @Override
@@ -75,19 +48,16 @@ public class RoomInfos_adapter2 extends RecyclerView.Adapter<RoomInfos_adapter2.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView RoomName, RoomCapacity, RoomRate, Dec, Inc, Count;
-        RadioButton Rbtn;
+        TextView RoomName, RoomCapacity, RoomRate;
+        ImageView roomImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            roomImage = itemView.findViewById(R.id.roomInfo2_RoomImage);
             RoomName = itemView.findViewById(R.id.roomInfo2_Roomname);
             RoomCapacity = itemView.findViewById(R.id.roomInfo2_Roomcapacity);
             RoomRate = itemView.findViewById(R.id.roomInfo2_Roomrate);
-            Dec = itemView.findViewById(R.id.roomInfo2_btnDec);
-            Inc = itemView.findViewById(R.id.roomInfo2_btnInc);
-            Count = itemView.findViewById(R.id.roomInfo2_Count);
-            Rbtn = itemView.findViewById(R.id.roomInfo2_Rbtn);
         }
     }
 }

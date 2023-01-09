@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Frontdesk.Frontdesk_Booking"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,6 +50,7 @@
                 android:textSize="26sp"/>
 
             <EditText
+                android:id="@+id/walkInBooking_guestName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
@@ -66,6 +68,7 @@
                 android:textColor="@color/black"
                 android:textSize="26sp"/>
             <EditText
+                android:id="@+id/walkInBooking_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
@@ -75,19 +78,6 @@
             <androidx.legacy.widget.Space
                 android:layout_width="30dp"
                 android:layout_height="match_parent"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time:"
-                android:textColor="@color/black"
-                android:textSize="26sp"/>
-            <EditText
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="26sp"
-                android:layout_weight="0.4"
-                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -107,6 +97,7 @@
                 android:textColor="@color/black"
                 android:textSize="26sp"/>
             <EditText
+                android:id="@+id/walkInBooking_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
@@ -120,6 +111,7 @@
                 android:textColor="@color/black"
                 android:textSize="26sp"/>
             <EditText
+                android:id="@+id/walkInBooking_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
@@ -132,9 +124,11 @@
             android:layout_height="10dp"/>
 
         <LinearLayout
+            android:id="@+id/walkInBooking_DatePicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/border">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -143,22 +137,26 @@
                 android:textColor="@color/black"
                 android:textSize="26sp"/>
             <EditText
+                android:id="@+id/walkInBooking_checkIn_Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"
                 android:hint="Date"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:editable="false"/>
             <androidx.legacy.widget.Space
                 android:layout_width="30dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:id="@+id/walkInBooking_checkIn_Time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"
                 android:hint="Time"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:editable="false"/>
 
             <androidx.legacy.widget.Space
                 android:layout_width="50dp"
@@ -172,22 +170,26 @@
                 android:textSize="26sp" />
 
             <EditText
+                android:id="@+id/walkInBooking_checkOut_Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"
                 android:hint="Date"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:editable="false"/>
             <androidx.legacy.widget.Space
                 android:layout_width="30dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:id="@+id/walkInBooking_checkOut_Time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"
                 android:hint="Time"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:editable="false"/>
 
         </LinearLayout>
 
@@ -207,11 +209,15 @@
                 android:textColor="@color/black"
                 android:textSize="26sp" />
 
-            <EditText
+            <TextView
+                android:id="@+id/walkInBooking_guestQty"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:inputType="number"
+                android:background="@drawable/border"
+                android:padding="5dp"/>
 
         </LinearLayout>
 
@@ -227,14 +233,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No. of Room/s:"
+                android:text="Room Type:"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
-            <EditText
-                android:layout_width="150dp"
+            <TextView
+                android:id="@+id/walkInBooking_roomType"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:padding="5dp"/>
 
             <androidx.legacy.widget.Space
                 android:layout_width="50dp"
@@ -243,15 +253,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Room Type:"
+                android:text="No. of Room/s:"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="26sp"
-                android:textColor="@color/black"
-                android:layout_weight="1"/>
+
+            <androidx.legacy.widget.Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent"/>
+
+                <TextView
+                    android:id="@+id/walkInBooking_roomQty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"/>
 
             <androidx.legacy.widget.Space
                 android:layout_width="50dp"
@@ -264,11 +282,13 @@
                 android:textColor="@color/black"
                 android:textSize="26sp" />
             <EditText
+                android:id="@+id/walkInBooking_roomPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:editable="false"/>
         </LinearLayout>
 
         <androidx.legacy.widget.Space
@@ -283,14 +303,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="No. of Cottage/s:"
+                android:text="Cottage Type:"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
-            <EditText
-                android:layout_width="150dp"
+            <TextView
+                android:id="@+id/walkInBooking_cottageType"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:background="@drawable/border"
+                android:padding="5dp"/>
 
             <androidx.legacy.widget.Space
                 android:layout_width="50dp"
@@ -299,15 +323,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cottage Type:"
+                android:text="No. of Cottage/s:"
                 android:textColor="@color/black"
                 android:textSize="26sp" />
-            <EditText
+
+
+            <androidx.legacy.widget.Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/walkInBooking_cottageQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="26sp"
+                android:textSize="32sp"
+                android:text="0"
                 android:textColor="@color/black"
-                android:layout_weight="1"/>
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"/>
 
             <androidx.legacy.widget.Space
                 android:layout_width="50dp"
@@ -320,11 +353,13 @@
                 android:textColor="@color/black"
                 android:textSize="26sp" />
             <EditText
+                android:id="@+id/walkInBooking_cottagePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
                 android:textColor="@color/black"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:editable="false"/>
         </LinearLayout>
 
         <androidx.legacy.widget.Space
@@ -348,6 +383,7 @@
                 android:layout_height="match_parent"/>
 
             <TextView
+                android:id="@+id/walkInBooking_Gcash"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="GCASH"
@@ -361,6 +397,7 @@
                 android:layout_height="match_parent"/>
 
             <TextView
+                android:id="@+id/walkInBooking_Cash"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="CASH"
@@ -390,10 +427,123 @@
                 android:layout_width="20dp"
                 android:layout_height="match_parent"/>
             <EditText
+                android:id="@+id/walkInBooking_Total"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:textSize="26sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:editable="false"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status of payment: "
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:id="@+id/walkInBooking_startPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="percentage of payment"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:visibility="gone"
+                android:editable="false"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/walkInBooking_50percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="50%"
+                    android:textSize="26sp"/>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"/>
+
+                <RadioButton
+                    android:id="@+id/walkInBooking_100percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="100%"
+                    android:textSize="26sp"/>
+
+            </RadioGroup>
+
+            <androidx.legacy.widget.Space
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Balance:"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:id="@+id/walkInBooking_paymentBalanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="payment balance"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:editable="false"/>
+
+        </LinearLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/walkInBooking_txtreference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reference number:"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:visibility="gone"/>
+
+            <androidx.legacy.widget.Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+
+            <EditText
+                android:id="@+id/walkInBooking_reference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Gcash reference number"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:editable="false"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
         <androidx.legacy.widget.Space
@@ -407,6 +557,7 @@
             android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/walkInBooking_bookNow"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="book now"
@@ -419,6 +570,7 @@
                 android:layout_height="match_parent"/>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/walkInBooking_cancel"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:text="cancel"

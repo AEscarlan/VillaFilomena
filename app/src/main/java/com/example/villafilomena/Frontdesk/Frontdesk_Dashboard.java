@@ -21,6 +21,7 @@ public class Frontdesk_Dashboard extends AppCompatActivity {
         booking = findViewById(R.id.frontdesk_booking);
         onlineBooking = findViewById(R.id.frontdesk_OnlineBooking);
         expArrival = findViewById(R.id.frontdesk_ExpArrival);
+        calendar = findViewById(R.id.frontdesk_calendar);
 
         booking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,12 @@ public class Frontdesk_Dashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Frontdesk_ExpArrival_Dashboard.class));
+            }
+        });
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Frontdesk_Calendar.class));
             }
         });
     }

@@ -16,6 +16,7 @@
       android:layout_margin="5dp">
 
     <TextView
+        android:id="@+id/testing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Expected Arrival"
@@ -49,9 +50,9 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="No. of people"
-          android:textSize="18sp"
+          android:textSize="15sp"
           android:textColor="@color/black"
-          android:layout_weight="1"/>
+          android:layout_weight="0.1"/>
 
       <TextView
           android:layout_width="wrap_content"
@@ -198,6 +199,7 @@
         android:id="@+id/guest_ExpDeparture_List"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
   </LinearLayout>
 
 </LinearLayout>

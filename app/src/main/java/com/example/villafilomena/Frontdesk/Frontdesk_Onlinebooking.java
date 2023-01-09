@@ -176,7 +176,7 @@ public class Frontdesk_Onlinebooking extends AppCompatActivity {
         Canvas canvas = page.getCanvas();
 
         Matrix matrix = new Matrix();
-        float scaleFactor = Math.min((float) 140 / bmp.getWidth(), (float) 140 / bmp.getHeight());
+        float scaleFactor = Math.min((float) 120 / bmp.getWidth(), (float) 120 / bmp.getHeight());
         bmp.getHeight();
         matrix.setScale(scaleFactor, scaleFactor);
         matrix.postTranslate(10, 25);
